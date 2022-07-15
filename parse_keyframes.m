@@ -1,0 +1,90 @@
+function [spot_arr, print_arr] = parse_keyframes(spot_detect, col_idx)
+%% <placeholder>
+%
+
+spot_info_arr = spot_detect.spotInfoArr;
+
+SPOTS = struct;
+print_arr = {};
+
+for frame_idx=1:length(spot_info_arr)
+    
+    curr_frame_info = spot_info_arr{frame_idx};
+    curr_frame_exclusions = spot_detect.getExclusionLogicArray(frame_idx);
+    curr_frame_logic = ~curr_frame_exclusions;
+    
+    if ~isempty(curr_frame_info)
+        curr_coords = curr_frame_info.objCoords(curr_frame_logic,:);
+        if ~isempty(curr_coords)
+            % col_idx = 2;
+            curr_signal = curr_frame_info.SIG_VALS(curr_frame_logic,col_idx);
+            curr_background = curr_frame_info.BG_VALS(curr_frame_logic,col_idx);
+            
+            % nan bkgd adjustment
+            nan_test_01 = find(cellfun(@isempty, curr_background));
+            nan_test_02 = find(cellfun(@any, cellfun(@isnan, curr_background,'UniformOutput',false)));
+            if ~isempty(nan_test_01) || ~isempty(nan_test_02)
+                [curr_background] = quick_nan_adjust(curr_background, nan_test_01, nan_test_02);
+            end
+            
+            curr_values = pull_spot_information(curr_signal,curr_background);
+            raw_values = pull_spot_information_raw(curr_signal,curr_background,1);
+            SPOTS(frame_idx).TIME = ones(length(curr_coords(:,1)),1).*frame_idx;
+            SPOTS(frame_idx).XCoord = curr_coords(:,1);
+            SPOTS(frame_idx).YCoord = curr_coords(:,2);
+            SPOTS(frame_idx).ZCoord = curr_coords(:,3);
+            SPOTS(frame_idx).INT_AVG = curr_values(:,1);
+            SPOTS(frame_idx).INT_MED = curr_values(:,2);
+            SPOTS(frame_idx).INT_SUM = curr_values(:,3);
+            SPOTS(frame_idx).INT_MAX = curr_values(:,5);
+            SPOTS(frame_idx).SIZE = curr_values(:,4);
+
+            SPOTS(frame_idx).INT_AVG_RAW = raw_values(:,1);
+            SPOTS(frame_idx).INT_MAX_RAW = raw_values(:,2);
+            SPOTS(frame_idx).INT_SUM_RAW = raw_values(:,3);
+            SPOTS(frame_idx).BG_MEAN = raw_values(:,4);
+            SPOTS(frame_idx).BG_STD = raw_values(:,5);
+            SPOTS(frame_idx).BG_MAX = raw_values(:,6);
+            SPOTS(frame_idx).BG_SUM = raw_values(:,7);
+            SPOTS(frame_idx).BG_SIZE = raw_values(:,8);
+        else
+            SPOTS(frame_idx).XCoord = [];
+            SPOTS(frame_idx).YCoord = [];
+            SPOTS(frame_idx).ZCoord = [];
+            SPOTS(frame_idx).INT_AVG = [];
+            SPOTS(frame_idx).INT_MED = [];
+            SPOTS(frame_idx).INT_SUM = [];
+            SPOTS(frame_idx).SIZE = [];
+
+            SPOTS(frame_idx).INT_AVG_RAW = [];
+            SPOTS(frame_idx).INT_MAX_RAW = [];
+            SPOTS(frame_idx).INT_SUM_RAW = [];
+            SPOTS(frame_idx).BG_MEAN = [];
+            SPOTS(frame_idx).BG_STD = [];
+            SPOTS(frame_idx).BG_MAX = [];
+        end
+    else
+        SPOTS(frame_idx).XCoord = [];
+        SPOTS(frame_idx).YCoord = [];
+        SPOTS(frame_idx).ZCoord = [];
+        SPOTS(frame_idx).INT_AVG = [];
+        SPOTS(frame_idx).INT_MED = [];
+        SPOTS(frame_idx).INT_SUM = [];
+        SPOTS(frame_idx).SIZE = [];
+
+        SPOTS(frame_idx).INT_AVG_RAW = [];
+        SPOTS(frame_idx).INT_MAX_RAW = [];
+        SPOTS(frame_idx).INT_SUM_RAW = [];
+        SPOTS(frame_idx).BG_MEAN = [];
+        SPOTS(frame_idx).BG_STD = [];
+        SPOTS(frame_idx).BG_MAX = [];
+    end
+end
+
+spot_arr = SPOTS;
+
+%
+%%%
+%%%%%
+%%%
+%
