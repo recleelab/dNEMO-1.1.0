@@ -1,11 +1,11 @@
 # dNEMO-1.1.0
-Software detecting-NEMO (dNEMO). Publication in Bioinformatics (March 2021): https://doi.org/10.1093/bioinformatics/btaa874 and described in STAR Protocols (in revision).
+Software detecting-NEMO (dNEMO). Publication in Bioinformatics (March 2021): https://doi.org/10.1093/bioinformatics/btaa874 and described in STAR Protocols (September 2022): https://doi.org/10.1016/j.xpro.2022.101630.
 
 Download dNEMO and add the folder and all subfolders to the current MATLAB path. Type RUN_ME into the command window to open the tool.
 
 Guided walkthrough for installation and use of dNEMO: dNEMO-0.9.0/DNEMO_READ_ME.docx
 
-Sample images for dNEMO: https://pitt.box.com/s/huzv0bq4ksbm4q5asfyj8v976jpwwo1g
+Sample images for dNEMO: [https://pitt.box.com/s/huzv0bq4ksbm4q5asfyj8v976jpwwo1g](https://data.mendeley.com/datasets/8j4x6dj2f7/1)
 
 Simulated images with theoretical PSFs were used in testing detection methods used in dNEMO, and can be found in this repository: https://github.com/recleelab/simulate_psf_image
 
