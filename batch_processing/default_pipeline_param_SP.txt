@@ -1,0 +1,11 @@
+#LEELABPIPELINE
+dnemo_wavelet-level=2
+dnemo_frame-limit=1
+dnemo_user-wavelet-threshold=1.7
+dnemo_oversegmentation=1
+dnemo_oversegmentation-max-min-diff=0.1
+dnemo_pixel-offset=1
+dnemo_pixel-background=1
+cellpose_rescale-dimensions=200
+cellpose_centroid-max-interframe-radius=30
+cellpose_cell-area-shift-threshold=0.25
