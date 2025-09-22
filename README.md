@@ -7,9 +7,9 @@ Guided walkthrough for installation and use of dNEMO: dNEMO-0.9.0/DNEMO_READ_ME.
 
 Sample images for dNEMO: [https://pitt.box.com/s/huzv0bq4ksbm4q5asfyj8v976jpwwo1g](https://data.mendeley.com/datasets/8j4x6dj2f7/1)
 
-Simulated images with theoretical PSFs were used in testing detection methods used in dNEMO, and can be found in this repository: https://github.com/recleelab/simulate_psf_image
+Images were simulated with theoretical PSFs to be used in testing detection methods used in dNEMO, and simulation methods can be found in this repository: https://github.com/recleelab/simulate_psf_image
 
-Simulated images created using the "simulate_psf_image" package and used to test dNEMO can be found here: https://pitt.box.com/s/pic5e5c7pxhlismfljhyregfrlkbwcjt
+Simulated images created using the "simulate_psf_image" package and used to test dNEMO can be found here: [Zenodo](https://zenodo.org/records/17178954?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImJmNzQzMGUzLWI4NDQtNDRjNC1hNDg4LWI0MjBmNzMzNmU0ZSIsImRhdGEiOnt9LCJyYW5kb20iOiJkNmRlZTI4MDc2MzZjYzBkOTc4NTRjNjc2M2Q3NDA3YiJ9.0_mwPCvWpu8J_dxUF5seI3PntAx0JMIeDln3LmYUkvPtuDUqjbcrifKZScpiDORgY9mgJiEvoafLt5bECMe9VA)
 
 Standalone copies of the application for Windows & Mac/Linux and wrapped materials used as examples in STAR Protocols manuscript can be found here: Lee, Robin; Kowalczyk, Gabriel; Guo, Yue  (2022), “Guo_Kowalczyk_Lee_Data_Software_Package”, Mendeley Data, V1, doi: 10.17632/8j4x6dj2f7.1
 
