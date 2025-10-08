@@ -98,7 +98,8 @@ else
                     distance_arr = dnemo_dist(centroidsPrev, centroidsCurrent');
                     actual_dists = distance_arr<2;
                     matchLocs = find(distance_arr<2);
-                    [prevRows,currRows] = ind2sub(length(centroidsPrev),matchLocs);
+                    [prevRows,currRows] = ind2sub(size(centroidsPrev),matchLocs); % updated to work with newer MATLAB
+
                     % check if this spot is new, or already represented in spotMat in a
                     % previous frame
                     [indLogic, indLoc] = ismember(prevRows,spotMat(:,i-1));

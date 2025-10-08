@@ -32,7 +32,7 @@ for cell_idx=1:length(polygon_list)
     else
         % cell either modified or removed, re-run entire list
         cell_signals = {};
-        for cell_idx=1:size(polygon_list)
+        for cell_idx=1:length(polygon_list) % update for new MATLAB
             [cell_signals_in_polygon] = cell_signal_assignment(spot_detect, polygon_list{cell_idx});
             cell_signals = cat(1,cell_signals, {cell_signals_in_polygon});
         end

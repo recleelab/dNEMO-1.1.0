@@ -101,7 +101,7 @@ else
                     % find all spots in previous frame within Euclidean dist of 2 of
                     % each spot in current frame
                     matchLocs = find(dist(centroidsPrev, centroidsCurrent')<2);
-                    [prevRows,currRows] = ind2sub(length(centroidsPrev),matchLocs);
+                    [prevRows,currRows] = ind2sub(size(centroidsPrev),matchLocs); % updated for new MATLAB
                     % check if this spot is new, or already represented in spotMat in a
                     % previous frame
                     [indLogic, indLoc] = ismember(prevRows,spotMat(:,i-1));

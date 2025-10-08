@@ -41,7 +41,7 @@ if overseg == 1
     % first locate all spots within 10pix of another spot
     % closepts = find(triu(dist(frame_centroids,frame_centroids'))<10 & triu(dist(frame_centroids,frame_centroids')~=0));
     closepts = find(triu(dnemo_dist(frame_centroids,frame_centroids'))<10 & triu(dnemo_dist(frame_centroids,frame_centroids')~=0));
-    [rows,cols] = ind2sub(length(frame_centroids),closepts);
+    [rows,cols] = ind2sub(size(frame_centroids),closepts); % updated to work with recent MATLAB versions
     clustercell = cell(length(rows),1);
     for i=1:length(rows)
         % check line histogram between 2 centroids

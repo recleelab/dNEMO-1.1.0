@@ -41,7 +41,7 @@ input_lbl_mat(borderlocs_ind) = input_lbl_mat(sub2ind(size(image),...
 
 updated_lbl_mat = input_lbl_mat - 1;
 subtract_me_mat = zeros(size(input_lbl_mat));
-for i=1:size(removed_indices)
+for i=1:length(removed_indices) % size -> length for newer MATLAB
     some_mat = updated_lbl_mat > removed_indices(i);
     subtract_me_mat(some_mat) = subtract_me_mat(some_mat) + 1;
 end
